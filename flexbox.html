@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.pork {
+  height: 100px;
+  width: 100px;
+  
+  display: flex; /*make the items inside align in a row*/
+  align-items: center; /*center items  123 vertical*/
+  justify-content: center; /*center items  123 horizontal*/
+
+  gap: 20px; /*only adds space between items, not at the edges.*/
+
+  margin-left: 100px; /*move the pork away from the left edge of the screen 100px.*/
+   /* margin: 0 auto; /*center  pork on the screen*/
+  margin-top: 50px; /* create space before and after the beef container */
+  margin-bottom: 50px; /* create space before and after the beef container */
+  
+  background-color: rgb(165, 185, 206);
+}
+
+
+.beef {
+  background-color: #923939;
+  font-size: 20pt;
+  padding: 20px;
+  border: 20px solid black;
+
+ text-align: center; /* without flex box the items stack vertically by default 
+                      to center items insdie beef use texbeeft-algin*/
+
+
+
+   }
+
+.soup {
+  background-color: #39925b;
+  font-size: 20pt;
+  padding: 20px;
+  border: 50px circle rgb(17, 3, 63);
+
+ text-align: center; /* without flex box the items stack vertically by default 
+                      to center items insdie beef use texbeeft-algin*/
+
+
+
+   }
+</style>
+</head>
+<body>
+
+<h1>How to move the containters_Flex Box</h1>
+
+<p> height: 100px; <br>
+  width: 100px; <br>
+  
+  display: flex; /*make the items inside align in a row*/ <br>
+  align-items: center; /*center items  123 vertical*/ <br>
+  justify-content: center; /*center items  123 horizontal*/ <br>
+
+  gap: 20px; /*only adds space between items, not at the edges.*/ <br>
+
+ margin-left: 100px; /*move the pork away from the left edge of the screen 100px.*/
+   /* margin: 0 auto; /*center  pork on the screen*/
+  margin-top: 50px; /* create space before and after the beef container */
+  margin-bottom: 50px; /* create space before and after the beef container */</p>
+
+<div class="pork">
+  <div>P</div>
+  <div>O</div>
+  <div>R</div>  
+  <div>K</div>  
+  </div>
+
+  <p>background-color: #923939; <br>
+  font-size: 20pt; <br>
+  padding: 20px; <br>
+  border: 20px solid black; <br>
+
+ text-align: center; /* without flex box the items stack vertically by default <br>
+                      to center items insdie beef use text-algin*/
+</p>
+
+  <div  class="beef">
+  <div>B</div>
+  <div>E</div>
+  <div>E</div>  
+  <div>F</div>  
+  </div>
+
+  <div  class="soup">
+  <div>S</div>
+  <div>O</div>
+  <div>U</div>  
+  <div>P</div>  
+</div>
+
+</body>
+</html>
