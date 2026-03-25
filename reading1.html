@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyi Ocean · reading 1</title>
+    <title>Onyi Ocean - Reading 1</title>
     <style>
-        /* same styling as main page – dark blue background, white text,
-           Gabriola headings, clean paragraphs, and a consistent link style */
         * {
             margin: 0;
             padding: 0;
@@ -14,150 +12,124 @@
         }
 
         body {
-            background-color: #0b1a3a;   /* rich dark blue */
+            background-image: url(https://media.giphy.com/media/DzsYt4rbcR5QOZnj6u/giphy.gif?cid=790b7611c1b858ad7858cbebb431fcae5550425e18d192ff&ep=v1_user_favorites&rid=giphy.gif&ct=g);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: white;
-            line-height: 1.6;
-            padding: 2rem 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
         }
 
-        /* headings: Gabriola (fallback: serif) */
-        h1, h2 {
-            font-family: 'Gabriola', 'Segoe UI', 'Apple Symbols', 'Lucida Handwriting', 'Monotype Corsiva', cursive, serif;
-            font-weight: normal;
-            letter-spacing: 0.02em;
-            color: white;
-            margin: 0.5em 0 0.2em 0;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
             font-size: 3.4rem;
-            border-bottom: 1px solid #3a5f8b;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 0.2rem;
-            margin-top: 0.2em;
-        }
-
-        /* optional subheading if needed (not used here, but ready) */
-        h2 {
-            font-size: 2.6rem;
-        }
-
-        /* paragraphs – clean sans-serif, comfortable width */
-        p {
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-            font-size: 1.2rem;
-            margin: 1.5rem 0;
-            max-width: 80ch;
-        }
-
-        /* style for the back link – consistent with main page link stack,
-           but here just one link. we'll give it a button-like appearance */
-        .back-link {
+            margin: 0.2em 0 0.5em 0;
             display: inline-block;
+        }
+
+        .reading-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
             font-family: 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
             color: white;
-            background-color: #1f3a5f;
-            padding: 0.7rem 2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            border: 2px solid #7bb0ff;      /* light blue border to match image borders */
-            transition: 0.15s ease;
+        }
+
+        .link-stack {
             margin: 2rem 0 1rem 0;
-            box-shadow: 0 4px 10px rgba(0, 10, 30, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
         }
 
-        .back-link:hover {
-            background-color: #2c4a7a;
-            border-color: #b0dbff;
-            transform: translateY(-3px);
-            text-decoration: underline wavy #a0d0ff 1.5px;
-        }
-
-        /* make sure all text stays white (just in case) */
-        a, p, h1, h2, span, div {
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
             color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
         }
 
-        /* optional fine-tuning for first letter (same as main page) */
-        .reflection p:first-of-type::first-letter {
-            font-size: 2.3rem;
-            font-family: 'Gabriola', cursive;
-            color: #cce4ff;
-            padding-right: 2px;
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
         }
 
-        /* keep images (if any later) within bounds, but not used here */
-        img {
-            max-width: 100%;
-            height: auto;
-            border: 3px solid #a0d0ff;
-            border-radius: 10px;
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .reading-block {
+                padding: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Reading 1</h1>
+        
+        <div class="reading-block">
+            <p>I'm not really great at taking photos, so I'm not really into photography. I'm more into drawing and illustration. I don't usually care about the story behind a photo or drawing; the piece should tell the story. Anything else I learn after the fact should add to it. An example is: I'm in class, we're analyzing a piece, I see nothing stands out, then the teacher talks about the backstory of the artist, or when it was made, then I go, "Ah, I see now." There's nothing bad about that, but for me, a picture should say a thousand words. I personally don't think that I've gotten to that level of critical thought when it comes to my art, but that is my goal.</p>
 
-    <!-- main heading: matches index (Gabriola, white) -->
-    <h1>Reading 1 · reflection</h1>
+            <p>For most of my life, I tried to get as close to realism as possible in my art. I poured countless hours into perfecting the details and making my drawings as lifelike as I could. However, I've come to realize that it's not just about replicating reality; it's about capturing real emotion. What truly excites me is the challenge of illustrating the depth of human experiences and the complex realities of people's lives. I want my art to go beyond the surface and truly reflect the emotions that individuals experience in their daily journeys.</p>
 
-    <!-- reflection content – your paragraphs, cleaned up -->
-    <div class="reflection">
-        <p>
-            I’m not really great at taking photos, so I’m not really into photography. 
-            I’m more into drawing and illustration. I'm a little unique, but I don't usually 
-            care about the story behind a photo or drawing; the piece should tell the story. 
-            Anything else I learn after the fact should add to it. An example is: I'm in class, 
-            we're analyzing a piece, I see nothing stands out, then the teacher talks about 
-            the backstory of the artist, or when it was made, then I go, "Ah, I see now." 
-            There's nothing bad about that, but for me, a picture should say a thousand words. 
-            I personally don’t think that I’ve gotten to that level of critical thought when 
-            it comes to my art, but that is my goal.
-        </p>
+            <p>I love showing the reality of the lives people are living, the struggles, the joys, and the nuances that often go unnoticed. This passion extends beyond just my drawings; I envision this exploration of human emotion through various mediums such as books, shows, and short films. Each medium provides a unique opportunity to tell stories that resonate on a deep level, allowing viewers or readers to connect with the characters and their experiences.</p>
 
-        <p>
-            For most of my life, I tried to get as close to realism as possible in my art. 
-            I poured countless hours into perfecting the details and making my drawings as 
-            lifelike as I could. However, I've come to realize that it’s not just about 
-            replicating reality; it’s about capturing real emotion. What truly excites me 
-            is the challenge of illustrating the depth of human experiences and the complex 
-            realities of people's lives. I want my art to go beyond the surface and truly 
-            reflect the emotions that individuals experience in their daily journeys.
-        </p>
+            <p>In a singular piece, I aim to weave together layers of emotional depth and authenticity that captures a slice of life. Whether it's a poignant moment between family members or a fleeting encounter with a stranger that sparks a profound realization, I want my audience to feel something. My goal is to evoke empathy and understanding, prompting individuals to reflect on their own feelings and experiences.</p>
 
-        <p>
-            I love showing the reality of the lives people are living, the struggles, the joys, 
-            and the nuances that often go unnoticed. This passion extends beyond just my drawings; 
-            I envision this exploration of human emotion through various mediums such as books, 
-            shows, and short films. Each medium provides a unique opportunity to tell stories 
-            that resonate on a deep level, allowing viewers or readers to connect with the 
-            characters and their experiences.
-        </p>
-
-        <p>
-            In a singular piece, I aim to weave together layers of emotional depth and 
-            authenticity that captures a slice of life. Whether it’s a poignant moment between 
-            family members or a fleeting encounter with a stranger that sparks a profound 
-            realization, I want my audience to feel something. My goal is to evoke empathy 
-            and understanding, prompting individuals to reflect on their own feelings and 
-            experiences.
-        </p>
-
-        <p>
-            Through these creative expressions, I hope to foster connections and spark 
-            conversations about the shared human experience. It’s important for me to create 
-            art that not only represents reality but also inspires others to see and appreciate 
-            the beauty in the complexity of life. By striving for this emotional truth in all 
-            my work, I feel like I can contribute something meaningful to the world.
-        </p>
+            <p>Through these creative expressions, I hope to foster connections and spark conversations about the shared human experience. It's important for me to create art that not only represents reality but also inspires others to see and appreciate the beauty in the complexity of life. By striving for this emotional truth in all my work, I feel like I can contribute something meaningful to the world.</p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+        </div>
     </div>
-
-    <!-- clean back link, styled as a pill button, vertically stacked feel (but single) -->
-    <a href="index.html" class="back-link">← Go back to Home Page</a>
-
-    <!-- fixed: stray <body> tag inside h1, duplicate paragraph, extra brackets etc. 
-         everything is now clean and matches main page aesthetics -->
 </body>
 </html>
