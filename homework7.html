@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean - Homework 7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif?cid=790b7611tnzr37t0xfw6b7i6k8z4b4r8h4e8g4d4s4c4k4k4&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-size: 2.4rem;
+            font-weight: normal;
+            color: white;
+            margin: 1.5rem 0 0.8rem 0;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: white;
+            margin: 1.2rem 0 0.5rem 0;
+        }
+
+        .nav-preview {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-demo a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            border: 1px solid white;
+            transition: 0.2s ease;
+        }
+
+        .nav-demo a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .style-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            justify-content: space-between;
+        }
+
+        .style-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .style-card h4 {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+            border-bottom: 1px solid white;
+            display: inline-block;
+        }
+
+        .font-demo {
+            font-family: 'Gabriola', cursive;
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .font-demo-sans {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            margin-right: 0.5rem;
+            border: 1px solid white;
+        }
+
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+
+        .image-preview figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-preview img {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border: 3px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .image-preview figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #ddd;
+        }
+
+        .explanation-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .explanation-block {
+                padding: 1.2rem;
+            }
+            .style-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Homework 7: Website Styling and Navigation</h1>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Objective:</strong> For this assignment, I focused on refining the overall design and navigation of my course website. The goal was to create a cohesive, professional-looking site with consistent styling across all pages, easy navigation, and thoughtful presentation of all coursework.
+            </p>
+        </div>
+        
+        <h2>Navigation Bar Design</h2>
+        <div class="nav-preview">
+            <div class="nav-demo">
+                <a href="index.html">Home</a>
+                <a href="reading1.html">Reading 1</a>
+                <a href="reading2.html">Reading 2</a>
+                <a href="homework2.html">Homework 2</a>
+                <a href="dof.html">Depth of Field</a>
+                <a href="field_blur.html">Field Blur</a>
+                <a href="camera_raw.html">Camera Raw</a>
+                <a href="photomontage.html">Photomontage</a>
+                <a href="homework5.html">Homework 5</a>
+                <a href="homework6.html">Homework 6</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">consistent navigation bar appears on all pages with "Home" link and links to all major assignments</p>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Navigation Structure:</strong> I built a consistent navigation system that appears on every page of my site. Each page includes a vertical stack of links at the bottom, styled as pill-shaped buttons with white borders. This design choice ensures visitors can easily move between assignments without getting lost. Every page also includes a prominent "Back to Home" link as the first option. For pages that are part of series (like the three Camera Raw exercises), I included direct links to related assignments to improve workflow.
+            </p>
+        </div>
+        
+        <h2>Typography and Color</h2>
+        <div class="style-showcase">
+            <div class="style-card">
+                <h4>Heading Font</h4>
+                <div class="font-demo">Gabriola</div>
+                <p class="font-demo-sans">Used for all H1 and H2 headings. Elegant, hand-drawn feel that matches my artistic identity.</p>
+            </div>
+            <div class="style-card">
+                <h4>Body Font</h4>
+                <div class="font-demo-sans" style="font-size: 1.2rem;">Segoe UI / Roboto</div>
+                <p class="font-demo-sans">Clean sans-serif for paragraphs and links. Ensures readability across all devices.</p>
+            </div>
+            <div class="style-card">
+                <h4>Color Scheme</h4>
+                <div><span class="color-swatch" style="background: #0b1a3a;"></span> Dark Blue Background</div>
+                <div><span class="color-swatch" style="background: white;"></span> White Text / Borders</div>
+                <div><span class="color-swatch" style="background: rgba(0,0,0,0.75);"></span> Transparent Overlay</div>
+                <p class="font-demo-sans" style="margin-top: 0.5rem;">Cinematic GIF background with dark overlay ensures text remains readable.</p>
+            </div>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Typography Choices:</strong> I selected Gabriola for all headings because it has a hand-crafted, organic quality that reflects my background in illustration and animation. It stands out while remaining elegant and readable. For body text, I chose Segoe UI with Roboto as a fallback — these are clean, modern sans-serif fonts that ensure long paragraphs remain easy to read against the animated background. All text is white for maximum contrast against the dark overlay.
+            </p>
+            <p>
+                <strong>Background and Readability:</strong> The cinematic GIF background creates visual interest and mood, but moving backgrounds can interfere with text readability. I solved this by adding a semi-transparent black overlay (0.6 opacity) over the entire background, then adding an additional darker overlay (0.75 opacity) specifically for text blocks. This creates a "film strip" effect where text areas feel grounded while the background still animates around them.
+            </p>
+        </div>
+        
+        <h2>Image Presentation</h2>
+        <div class="image-preview">
+            <figure>
+                <img src="IMG_0322.jpg" alt="Self portrait">
+                <figcaption>consistent white borders</figcaption>
+            </figure>
+            <figure>
+                <img src="IMG_0283.PNG" alt="Homework 2 image">
+                <figcaption>all images have white borders</figcaption>
+            </figure>
+            <figure>
+                <img src="photomontage_final.jpg" alt="Photomontage">
+                <figcaption>captions with exercise name</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Image Consistency:</strong> Every image across all homework pages now has a consistent white border (4px) and subtle rounded corners. This creates visual unity across assignments and makes the gallery feel cohesive. Each image includes a caption identifying the exercise or content, helping viewers understand what they're looking at without having to read surrounding text.
+            </p>
+            <p>
+                <strong>Layout Structure:</strong> I used semantic HTML elements and organized content into clear sections with consistent spacing. Images are displayed in flexible grid layouts that adapt to different screen sizes using flexbox and media queries. This ensures the site is fully responsive and looks good on both desktop and mobile devices.
+            </p>
+        </div>
+        
+        <h2>Site-Wide Improvements</h2>
+        <div class="explanation-block">
+            <ul>
+                <li><strong>External CSS:</strong> Consolidated all styling into a consistent internal CSS block on each page, ensuring visual uniformity. Future improvement will be moving to a single external stylesheet.</li>
+                <li><strong>Consistent Headers:</strong> All pages use the same H1 styling with Gabriola font and white border accent.</li>
+                <li><strong>Title Text Emphasis:</strong> Headers stand out with larger size, distinct font, and subtle text shadow for depth.</li>
+                <li><strong>Image Sizing:</strong> All images are properly sized for web with max-width constraints to prevent layout breaking.</li>
+                <li><strong>Background:</strong> Non-white background with cinematic GIF and dark overlay for enhanced appearance and readability.</li>
+                <li><strong>Navigation:</strong> Every page includes consistent link structure with easy return to home page and cross-linking between related assignments.</li>
+            </ul>
+            <p>
+                These improvements make the site easier to navigate and more professional in appearance. The consistent design language across all pages reinforces my personal brand as an artist and designer, while the thoughtful navigation ensures that visitors can explore my coursework without frustration.
+            </p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+            <a href="dof.html">Go to Depth of Field</a>
+            <a href="field_blur.html">Go to Field Blur</a>
+            <a href="camera_raw.html">Go to Camera Raw</a>
+            <a href="photomontage.html">Go to Photomontage</a>
+            <a href="homework5.html">Go to Homework 5</a>
+            <a href="homework6.html">Go to Homework 6</a>
+            <a href="homework2.html">Go to Homework 2</a>
+        </div>
+    </div>
+</body>
+</html>

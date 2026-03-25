@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean - Photomontage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif?cid=790b7611tnzr37t0xfw6b7i6k8z4b4r8h4e8g4d4s4c4k4k4&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-row img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .image-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .explanation-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .explanation-block {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Photomontage: Surrealism</h1>
+        
+        <div class="image-row">
+            <figure>
+                <img src="photomontage_final.jpg" alt="Final photomontage combining deep sea bioluminescence, poison dart frogs, and old cartoons">
+                <figcaption>final photomontage – surreal dreamscape</figcaption>
+            </figure>
+            <figure>
+                <img src="photomontage_layers.jpg" alt="Screenshot of Photoshop layers panel showing layer masks and blend modes">
+                <figcaption>photoshop layers panel – non-destructive editing workflow</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Concept:</strong> For this photomontage, I wanted to explore surrealism by combining three seemingly unrelated elements: deep sea bioluminescence, poison dart frogs, and old cartoons. The deep sea represents the unknown, the subconscious, and the mysterious beauty that exists beyond our everyday perception. Poison dart frogs bring vibrant, almost unreal color and a sense of danger wrapped in beauty. Old cartoons represent nostalgia, childhood imagination, and a world where anything is possible. Together, these elements create a dreamlike scene that questions the boundaries between reality, memory, and fantasy.
+            </p>
+            <p>
+                <strong>Techniques:</strong> I sourced images from creative commons and my own photography. In Photoshop, I used layer masks extensively to blend the elements seamlessly. The bioluminescent glow from deep sea creatures became the lighting source for the entire composition. I applied blend modes like Screen and Overlay to make the poison dart frog colors pop against the dark ocean background while maintaining their vibrant toxicity. For the cartoon elements, I used Soft Light blending to integrate them into the scene without losing their hand-drawn quality. I also used adjustment layers (Curves, Hue/Saturation, and Color Balance) to unify the color palette across all elements, creating a cohesive surreal environment. The final composition invites the viewer to explore a world where childhood imagination, natural wonder, and the mysteries of the deep collide.
+            </p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+            <a href="dof.html">Go to Depth of Field</a>
+            <a href="field_blur.html">Go to Field Blur</a>
+            <a href="camera_raw.html">Go to Camera Raw</a>
+            <a href="homework2.html">Go to Homework 2</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean - Camera Raw Fix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif?cid=790b7611tnzr37t0xfw6b7i6k8z4b4r8h4e8g4d4s4c4k4k4&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        .image-pair {
+            margin: 2rem 0;
+        }
+
+        .image-pair h3 {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.4rem;
+            margin: 1rem 0 0.5rem 0;
+            color: white;
+            font-weight: normal;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .image-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-row img {
+            display: block;
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .image-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .explanation-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .explanation-block {
+                padding: 1.2rem;
+            }
+            .image-row img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Camera Raw Fix</h1>
+        
+        <div class="image-pair">
+            <h3>JPG Image</h3>
+            <div class="image-row">
+                <figure>
+                    <img src="camera_raw_jpg_original.jpg" alt="Original JPG image before Camera Raw adjustments">
+                    <figcaption>original JPG – flat exposure, muted colors</figcaption>
+                </figure>
+                <figure>
+                    <img src="camera_raw_jpg_after.jpg" alt="JPG image after Camera Raw adjustments">
+                    <figcaption>after Camera Raw – corrected exposure, enhanced color</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="image-pair">
+            <h3>RAW Image</h3>
+            <div class="image-row">
+                <figure>
+                    <img src="camera_raw_raw_original.jpg" alt="Original RAW image before Camera Raw adjustments">
+                    <figcaption>original RAW – neutral profile, maximum flexibility</figcaption>
+                </figure>
+                <figure>
+                    <img src="camera_raw_raw_after.jpg" alt="RAW image after Camera Raw adjustments">
+                    <figcaption>after Camera Raw – white balance, contrast, and detail recovery</figcaption>
+                </figure>
+            </div>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Process:</strong> For this exercise, I used Adobe Camera Raw to edit two images — one JPG and one RAW file. Camera Raw allows for non-destructive editing with precise control over exposure, white balance, contrast, and color grading. I adjusted both images to improve their overall quality while maintaining a natural look.
+            </p>
+            <p>
+                <strong>JPG Adjustments:</strong> The JPG image had limited flexibility since much of the data is already processed. I made subtle adjustments to exposure (+0.6), boosted contrast slightly, added clarity to bring out textures, and increased vibrance to make colors pop without oversaturation. I also used a slight S-curve in the tone curve panel to add depth.
+            </p>
+            <p>
+                <strong>RAW Adjustments:</strong> The RAW file gave me much more control. I corrected the white balance by clicking on a neutral area, which brought the colors to life. I expanded the dynamic range by pulling down highlights to recover detail in bright areas and lifting shadows to reveal hidden texture. I added a moderate S-curve for contrast, increased texture and clarity for sharpness, and used the HSL panel to fine-tune individual colors. The result is a much more balanced and vibrant image compared to the flat RAW preview.
+            </p>
+            <p>
+                <strong>Comparison:</strong> The RAW file allowed for significantly more recovery in both highlights and shadows. The JPG adjustments were more limited and risked introducing artifacts if pushed too far. This exercise showed me why shooting in RAW is preferred when you want maximum flexibility in post-processing.
+            </p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+            <a href="dof.html">Go to Depth of Field</a>
+            <a href="field_blur.html">Go to Field Blur</a>
+            <a href="homework2.html">Go to Homework 2</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean - Homework 5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif?cid=790b7611tnzr37t0xfw6b7i6k8z4b4r8h4e8g4d4s4c4k4k4&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-size: 2.4rem;
+            font-weight: normal;
+            color: white;
+            margin: 1.5rem 0 0.5rem 0;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-row img {
+            display: block;
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .image-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .environment-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .environment-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .environment-row img {
+            display: block;
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .environment-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .explanation-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .explanation-block {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Homework 5</h1>
+        
+        <h2>Vector Emotive Eye</h2>
+        <div class="image-row">
+            <figure>
+                <img src="emotive_eye.png" alt="Vector illustration of an emotive eye">
+                <figcaption>emotive eye – vector illustration expressing emotion</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Emotive Eye:</strong> For this vector illustration, I created an eye that expresses a sense of wonder and curiosity. I used two complementary colors — deep purple and soft amber — to create visual tension and depth. The eye features a large, luminous iris with gradient blends that suggest light reflecting off water. The shape of the eyebrow and the slight widening of the eye convey a feeling of awe and discovery. I used the pen tool to create clean curves for the eyelid and lash lines, while the iris was built from layered shapes with transparency to create depth. The emotion I wanted to capture is that moment of seeing something truly unexpected and beautiful for the first time.
+            </p>
+        </div>
+        
+        <h2>Illustrated Environment</h2>
+        <div class="environment-row">
+            <figure>
+                <img src="whale_fall_original.jpg" alt="Original photograph of ocean floor">
+                <figcaption>original photograph – ocean floor reference</figcaption>
+            </figure>
+            <figure>
+                <img src="whale_fall_illustration.png" alt="Illustrated version of whale fall with flashlight fish">
+                <figcaption>illustrated environment – whale fall with flashlight fish</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Environment:</strong> This illustrated scene depicts the ocean floor where a whale fall has occurred. A whale fall is when a whale's carcass sinks to the deep sea, creating a temporary ecosystem that sustains various marine life for decades. I chose this environment because it represents both death and rebirth — the whale's body becomes a foundation for new life in the deep ocean. It's a hauntingly beautiful cycle that speaks to transformation and the interconnectedness of all living things.
+            </p>
+            <p>
+                <strong>Transformation and Color:</strong> I used a triad color scheme of deep blue, muted green, and touches of amber to create a cohesive underwater atmosphere. The original photograph provided the basic composition, but I transformed it dramatically through illustration. The whale skeleton became more defined and sculptural, with clean vector lines emphasizing its massive scale. The sediment and rocks were simplified into geometric shapes to create visual rhythm. For the flashlight fish, I used gradient blends to create their signature bioluminescent glow, making them the focal points that guide the viewer's eye across the composition. I built the scene using layers to separate foreground (fish and skeleton details), middle ground (the whale's ribcage and surrounding sediment), and background (the distant darkness of the deep sea). The result is a stylized yet haunting depiction of this rare deep-sea phenomenon.
+            </p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+            <a href="dof.html">Go to Depth of Field</a>
+            <a href="field_blur.html">Go to Field Blur</a>
+            <a href="camera_raw.html">Go to Camera Raw</a>
+            <a href="photomontage.html">Go to Photomontage</a>
+            <a href="homework2.html">Go to Homework 2</a>
+        </div>
+    </div>
+</body>
+</html>

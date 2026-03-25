@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean - Homework 6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif?cid=790b7611tnzr37t0xfw6b7i6k8z4b4r8h4e8g4d4s4c4k4k4&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-size: 2.4rem;
+            font-weight: normal;
+            color: white;
+            margin: 1.5rem 0 0.5rem 0;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        .pattern-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pattern-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .pattern-row img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .pattern-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .clothing-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .clothing-row figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .clothing-row img {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 4px solid white;
+            border-radius: 8px;
+            background-color: black;
+        }
+
+        .clothing-row figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .explanation-block {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            border-left: 3px solid white;
+        }
+
+        p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2rem;
+            margin: 1.2rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            min-width: 220px;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .explanation-block {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Homework 6: Color and Pattern</h1>
+        
+        <h2>Pattern 1: Triadic Color Scheme</h2>
+        <div class="pattern-row">
+            <figure>
+                <img src="pattern_triadic.jpg" alt="Geometric pattern using triadic color scheme">
+                <figcaption>triadic pattern – 4K resolution</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Color Rule: Triadic</strong> For this pattern, I used a triadic color scheme based on the Adobe Color website. The three colors are evenly spaced around the color wheel, creating a vibrant and balanced composition. I chose a combination of teal, coral, and mustard yellow. These colors have high contrast while still feeling harmonious together. The pattern itself is built from repeating geometric shapes — circles, triangles, and hexagons — arranged in a tessellating grid. I used the Pattern Options window in Illustrator to create a seamless repeat with a 4K size (4096 x 3112 px). The overlapping shapes create depth and movement, while the triadic colors ensure each element stands out without overwhelming the composition.
+            </p>
+        </div>
+        
+        <h2>Pattern 2: Color Mood from Image</h2>
+        <div class="pattern-row">
+            <figure>
+                <img src="pattern_mood.jpg" alt="Pattern using color scheme extracted from reference image">
+                <figcaption>color mood pattern – tabloid print size</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Color Mood:</strong> For the second pattern, I created a color mood by extracting a palette from a reference image — a photograph of a sunset over the ocean. Using the Color Mood tool in Adobe Color, I captured the deep navy blues, warm oranges, dusty rose, and soft lavender from the original photo. I then applied these colors to a pattern built from layered organic shapes inspired by ocean waves and coral formations. The pattern uses a more fluid, natural composition compared to the geometric first pattern. I created this pattern at tabloid print size (792 x 1224 pt) using Illustrator's Pattern Options with a grid offset to create a staggered, more organic repeat. The result feels both calming and dynamic, reflecting the mood of the original sunset image.
+            </p>
+        </div>
+        
+        <h2>Clothing Mockup</h2>
+        <div class="clothing-row">
+            <figure>
+                <img src="pattern_shirt_mockup.jpg" alt="Pattern design applied to a shirt mockup">
+                <figcaption>pattern applied to clothing – triadic design on shirt</figcaption>
+            </figure>
+        </div>
+        
+        <div class="explanation-block">
+            <p>
+                <strong>Application:</strong> I used an online mockup generator to apply my triadic geometric pattern to a shirt. This step helps visualize how the pattern would work as a textile design. The repeating geometric shapes translate well to fabric, creating a bold, modern look. The high contrast triadic colors make the pattern pop against the garment's base, while the seamless repeat ensures the design flows naturally across seams and edges. Seeing the pattern on a 3D mockup gives a better sense of scale and how the colors interact in a real-world application.
+            </p>
+            <p>
+                <strong>Process Summary:</strong> Both patterns were created using Adobe Illustrator's Pattern Options tool. I started with basic geometric and organic shapes, built them into a tile, and adjusted the spacing, overlap, and offset to achieve a seamless repeat. The triadic pattern used a strict grid layout with overlapping elements to create depth. The color mood pattern used a more fluid arrangement with a brick offset to create visual interest. I saved both patterns as swatches, then applied them to artboards at the required sizes before exporting as PNGs for web.
+            </p>
+        </div>
+        
+        <div class="link-stack">
+            <a href="index.html">Back to Home</a>
+            <a href="dof.html">Go to Depth of Field</a>
+            <a href="field_blur.html">Go to Field Blur</a>
+            <a href="camera_raw.html">Go to Camera Raw</a>
+            <a href="photomontage.html">Go to Photomontage</a>
+            <a href="homework5.html">Go to Homework 5</a>
+            <a href="homework2.html">Go to Homework 2</a>
+        </div>
+    </div>
+</body>
+</html>
