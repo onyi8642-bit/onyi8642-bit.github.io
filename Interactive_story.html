@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean · interactive story: the bathroom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* plain black background - no GIF */
+        body {
+            background-color: black;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 1rem 0;
+            display: inline-block;
+        }
+
+        .story-card {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            border-left: 3px solid white;
+        }
+
+        .story-text {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+
+        .choices {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .choice-btn {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            border: 2px solid white;
+            transition: 0.2s ease;
+            font-size: 1.1rem;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .choice-btn:hover {
+            background: white;
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        .scene-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border: 4px solid white;
+            border-radius: 12px;
+            margin: 1rem 0;
+            background: #111;
+        }
+
+        .back-link {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid white;
+            display: inline-block;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            background: #222;
+        }
+
+        /* animated text for talk to it scene - words appear one at a time */
+        .fade-line {
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+            margin: 0.8rem 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        hr {
+            margin: 1rem 0;
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .dialogue-line {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚪 the bathroom · interactive story</h1>
+    <p style="margin-bottom: 1rem;">a strange encounter in front of the mirror — where will your choices lead?</p>
+
+    <!-- 
+        PLACEHOLDER IMAGES / GIFS:
+        Replace the src attributes with your own images or gifs.
+        Each scene has a placeholder with a clear description.
+        For "Talk to it" there is no image needed as requested.
+    -->
+
+    <!-- SCENE: START (you enter the bathroom) -->
+    <div class="story-card" id="scene-start">
+        <img class="scene-image" src="IMG_9879.GIF" alt="bathroom entrance ">
+        <div class="story-text">You enter the bathroom</div>
+        <div class="choices">
+            <a href="#" onclick="showScene('stare'); return false;" class="choice-btn">stare intensely</a>
+            <a href="#" onclick="showScene('wash'); return false;" class="choice-btn">Wash your face</a>
+        </div>
+        <div style="margin-top: 1rem;"><a href="index.html" class="back-link">← back to home</a></div>
+    </div>
+
+    <!-- hidden scenes container -->
+    <div id="dynamic-scene" style="display: none;"></div>
+
+    <script>
+        function showScene(sceneId) {
+            const container = document.getElementById('dynamic-scene');
+            const startDiv = document.getElementById('scene-start');
+            
+            if (startDiv) startDiv.style.display = 'none';
+            container.style.display = 'block';
+            
+            let html = '';
+            
+            // SCENE: STARE
+            if (sceneId === 'stare') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="IMG_9880.GIF" alt="staring intensely">
+                        <div class="story-text">stare intensely</div>
+                        <div class="story-text">You hear a voice</div>
+                        <div class="story-text">It says "I'm watching you"</div>
+                        <div class="choices">
+                            <a href="#" onclick="showScene('look_for_it'); return false;" class="choice-btn">look for it</a>
+                            <a href="#" onclick="showScene('talk_to_it'); return false;" class="choice-btn">Talk to it</a>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+            }
+            // SCENE: WASH
+            else if (sceneId === 'wash') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="merged.gif" alt="washing face">
+                        <div class="story-text">Wash your face</div>
+                        <div class="story-text">You hear a voice</div>
+                        <div class="story-text">It says "I'm following you"</div>
+                        <div class="choices">
+                            <a href="#" onclick="showScene('look_for_it'); return false;" class="choice-btn">look for it</a>
+                            <a href="#" onclick="showScene('talk_to_it'); return false;" class="choice-btn">Talk to it</a>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+            }
+            // SCENE: LOOK FOR IT
+            else if (sceneId === 'look_for_it') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="9.gif" alt="looking for it">
+                        <div class="story-text">look for it</div>
+                        <div class="story-text">It says "no it's not going to be that easy to find me"</div>
+                        <div class="choices">
+                            <a href="#" onclick="showScene('talk_to_it'); return false;" class="choice-btn">talk to it</a>
+                            <a href="#" onclick="showScene('ignore_after_look'); return false;" class="choice-btn">Ignore it</a>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+            }
+            // IGNORE IT (from look for it branch)
+            else if (sceneId === 'ignore_after_look') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="ART_20260506-070931.PNG" alt="ignoring">
+                        <div class="story-text">Ignore it</div>
+                        <div class="story-text">You do your usual activities as it talks to you</div>
+                        <div class="story-text">You're seen watching tv - it says "I love this show" As you eat - it says "I hate broccoli" As you sleep it says "don't worry I'll watch over you"</div>
+                        <div class="choices">
+                            <a href="#" onclick="showScene('accept_reality'); return false;" class="choice-btn">except this reality</a>
+                            <a href="#" onclick="showScene('panic_end'); return false;" class="choice-btn">Panic</a>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+            }
+            // ACCEPT REALITY
+            else if (sceneId === 'accept_reality') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="ART_20260506-064301.PNG" alt="accept reality">
+                        <div class="story-text">except this reality</div>
+                        <div class="story-text">This leads you to the bathroom banging your head</div>
+                        <div class="story-text">🎬 THE END.</div>
+                        <a href="#" onclick="resetToStart(); return false;" class="choice-btn">↺ play again</a>
+                        <div style="margin-top: 1rem;"><a href="index.html" class="back-link">🏠 back to home</a></div>
+                    </div>
+                `;
+            }
+            // PANIC END
+            else if (sceneId === 'panic_end') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="ART_20260506-065659.PNG" alt="panic ending">
+                        <div class="story-text">Panic</div>
+                        <div class="story-text">the reflection shatters the glass and breaks you</div>
+                        <div class="story-text">🎬 THE END.</div>
+                        <a href="#" onclick="resetToStart(); return false;" class="choice-btn">↺ restart</a>
+                        <div style="margin-top: 1rem;"><a href="index.html" class="back-link">🏠 home</a></div>
+                    </div>
+                `;
+            }
+            // TALK TO IT (with animated text - words appear one at a time)
+            else if (sceneId === 'talk_to_it') {
+                // exact conversation from your words
+                const dialogue = [
+                    { speaker: "You", text: "why, what did I ever do to you" },
+                    { speaker: "It", text: "nothing, you want me to follow you" },
+                    { speaker: "You", text: "No I don't please stop" },
+                    { speaker: "It", text: "I can't…You want- need me to follow you" },
+                    { speaker: "You", text: "…" }
+                ];
+                
+                html = `
+                    <div class="story-card" id="talkScene">
+                        <div class="story-text">Talk to it</div>
+                        <div class="story-text">You say</div>
+                        <div id="typewriterContainer" style="min-height: 300px;"></div>
+                        <div id="postChoices" style="display: none;">
+                            <div class="choices">
+                                <a href="#" onclick="showScene('ignore_after_talk'); return false;" class="choice-btn">ignore it</a>
+                                <a href="#" onclick="showScene('stare_at_yourself'); return false;" class="choice-btn">Stare at yourself</a>
+                            </div>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+                container.innerHTML = html;
+                
+                let index = 0;
+                const containerDiv = document.getElementById('typewriterContainer');
+                const choicesDiv = document.getElementById('postChoices');
+                
+                function addNextLine() {
+                    if (index < dialogue.length) {
+                        const line = dialogue[index];
+                        const p = document.createElement('p');
+                        p.className = 'fade-line';
+                        p.style.margin = '0.6rem 0';
+                        p.innerHTML = `<strong>${line.speaker}:</strong> “${line.text}”`;
+                        containerDiv.appendChild(p);
+                        index++;
+                        setTimeout(addNextLine, 800);
+                    } else {
+                        choicesDiv.style.display = 'block';
+                    }
+                }
+                setTimeout(addNextLine, 200);
+                return;
+            }
+            // IGNORE IT (after talk to it branch)
+            else if (sceneId === 'ignore_after_talk') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="ART_20260506-070931.PNG" alt="ignoring">
+                        <div class="story-text">ignore it</div>
+                        <div class="story-text">You do your usual activities as it talks to you</div>
+                        <div class="story-text">You're seen watching tv - it says "I love this show" As you eat - it says "I hate broccoli" As you sleep it says "don't worry I'll watch over you"</div>
+                        <div class="choices">
+                            <a href="#" onclick="showScene('accept_reality'); return false;" class="choice-btn">except this reality</a>
+                            <a href="#" onclick="showScene('panic_end'); return false;" class="choice-btn">Panic</a>
+                        </div>
+                        <a href="#" onclick="resetToStart(); return false;" class="back-link">↺ start over</a>
+                    </div>
+                `;
+            }
+            // STARE AT YOURSELF (mirror bang ending)
+            else if (sceneId === 'stare_at_yourself') {
+                html = `
+                    <div class="story-card">
+                        <img class="scene-image" src="ART_20260506-064301.PNG" alt="stare at yourself">
+                        <div class="story-text">Stare at yourself</div>
+                        <div class="story-text">You bang your head on the mirror and say "be quiet"</div>
+                        <div class="story-text">🎬 THE END.</div>
+                        <a href="#" onclick="resetToStart(); return false;" class="choice-btn">↺ play again</a>
+                        <div style="margin-top: 1rem;"><a href="index.html" class="back-link">🏠 back to home</a></div>
+                    </div>
+                `;
+            }
+            
+            if (sceneId !== 'talk_to_it') {
+                container.innerHTML = html;
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function resetToStart() {
+            const dynamicDiv = document.getElementById('dynamic-scene');
+            const startDiv = document.getElementById('scene-start');
+            dynamicDiv.style.display = 'none';
+            dynamicDiv.innerHTML = '';
+            if (startDiv) startDiv.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</div>
+</body>
+</html>
+```
