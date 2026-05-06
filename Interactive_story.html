@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,14 +81,25 @@
             transform: translateY(-2px);
         }
 
+        /* FIXED: images now show completely without cropping */
         .scene-image {
             width: 100%;
-            max-height: 300px;
-            object-fit: cover;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
             border: 4px solid white;
             border-radius: 12px;
             margin: 1rem 0;
             background: #111;
+            display: block;
+        }
+
+        /* additional fix for any image or GIF inside story-card */
+        .story-card img,
+        .story-card video {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         .back-link {
@@ -137,15 +147,14 @@
     <p style="margin-bottom: 1rem;">a strange encounter in front of the mirror — where will your choices lead?</p>
 
     <!-- 
-        PLACEHOLDER IMAGES / GIFS:
-        Replace the src attributes with your own images or gifs.
-        Each scene has a placeholder with a clear description.
-        For "Talk to it" there is no image needed as requested.
+        IMAGES / GIFS:
+        Images now display fully without cropping.
+        For GIFs, they will also show completely.
     -->
 
     <!-- SCENE: START (you enter the bathroom) -->
     <div class="story-card" id="scene-start">
-        <img class="scene-image" src="IMG_9879.GIF" alt="bathroom entrance ">
+        <img class="scene-image" src="IMG_9879.GIF" alt="bathroom entrance">
         <div class="story-text">You enter the bathroom</div>
         <div class="choices">
             <a href="#" onclick="showScene('stare'); return false;" class="choice-btn">stare intensely</a>
@@ -352,4 +361,3 @@
 </div>
 </body>
 </html>
-```
