@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean · Oral Presentation · The Middle Passage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/l0MYEqE5aUt3fpC2I/giphy.gif?cid=790b7611yr9xz5bxs7z5j3z8x2c4a7f6d4g8h2j5k9l0q1w2e&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-size: 2.2rem;
+            font-weight: normal;
+            color: white;
+            margin: 1.5rem 0 0.5rem 0;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffcc88;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .slide-card {
+            background: rgba(0, 0, 0, 0.78);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            border-left: 4px solid white;
+            transition: all 0.2s ease;
+        }
+
+        .slide-card p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.15rem;
+            margin: 1rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .slide-card ul {
+            margin: 0.8rem 0 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .slide-card li {
+            margin: 0.5rem 0;
+        }
+
+        .highlight {
+            color: #ffaa66;
+            font-weight: bold;
+        }
+
+        .principle-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border-left: 2px solid #ffaa66;
+        }
+
+        .image-placeholder {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px dashed white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 1px solid white;
+            transition: 0.2s ease;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .stat-badge {
+            background: rgba(100, 50, 30, 0.7);
+            padding: 0.8rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .slide-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oral Presentation · The Middle Passage</h1>
+        <p style="margin-bottom: 1rem; opacity: 0.8;">sculpture analysis · design principles · social context</p>
+
+        <!-- SLIDE 1: TITLE / INTRO -->
+        <div class="slide-card">
+            <h2>The Middle Passage</h2>
+            <p><span class="highlight">Artist:</span> Onyinyechi Erondu (me)<br>
+            <span class="highlight">Year:</span> 2018-2019<br>
+            <span class="highlight">Inspiration:</span> The Middle Passage by Tom Feelings</p>
+            <div class="image-placeholder">
+                📷 sculpture image placeholder — replace with photo of your bust
+                <img src="sculpture_main.jpg" alt="The Middle Passage sculpture" onerror="this.style.display='none'">
+            </div>
+            <p>This is a bust with additional elements — a statement on civil rights movements. I made it to show the severity of the impacts of the slave trade.</p>
+        </div>
+
+        <!-- SLIDE 2: HISTORICAL CONTEXT -->
+        <div class="slide-card">
+            <h2>Historical Context · The Middle Passage</h2>
+            <p>The Middle Passage was the central leg of the Triangular Trade — a massive shipping circuit that fueled the economies of Europe, Africa, and the Americas for over three centuries.</p>
+            <div class="stat-badge">
+                📊 Between 1500 and 1866: ~12.5 million Africans transported<br>
+                💔 ~10.7 million survived the journey<br>
+                ⚰️ Estimated 15% to 25% mortality rate on board
+            </div>
+            <p>The voyage could take anywhere from three weeks to several months. My sculpture confronts this history directly.</p>
+        </div>
+
+        <!-- SLIDE 3: MATERIALS + SCALE -->
+        <div class="slide-card">
+            <h2>Materials & Scale</h2>
+            <p><span class="highlight">Materials:</span> Clay for the bust and ocean body. The ship is made with toothpicks and medical tape.<br>
+            <span class="highlight">Scale:</span> Bust-sized with extended elements — the ship rises above, while three mini figures struggle in the ceramic ocean.</p>
+            <div class="principle-box">
+                <strong>⚒️ Technical Methods:</strong> Hand-built clay sculpture with assembled ship. The rough texture of the ocean was intentional — slaves fighting the current.
+            </div>
+        </div>
+
+        <!-- SLIDE 4: DESIGN PRINCIPLES - BALANCE & FORM -->
+        <div class="slide-card">
+            <h2>Design Principles · Balance & Form</h2>
+            <p><span class="highlight">Balance / Symmetry:</span> Most busts are innately symmetrical, but I wouldn't call this a balanced piece. The way the ship falls makes this <strong>asymmetrical</strong> — the weight leans to one side, creating tension.</p>
+            <p><span class="highlight">Form / Shape:</span> <strong>Organic, not geometric</strong> — human form + body of water. The curves of the face contrast with the angular, fragile ship.</p>
+        </div>
+
+        <!-- SLIDE 5: REPETITION + TEXTURE -->
+        <div class="slide-card">
+            <h2>Repetition & Texture</h2>
+            <p><span class="highlight">Repetition:</span> I have <strong>three mini slaves</strong> struggling in the ceramic ocean. Their poses echo each other, reinforcing the collective suffering.</p>
+            <p><span class="highlight">Texture:</span> The ocean body could be smooth, but I made it <strong>rough</strong> — it made sense since the slaves are fighting the current. The contrast between rough water and smooth skin adds visual and tactile tension.</p>
+        </div>
+
+        <!-- SLIDE 6: CONTRAST + SPACE -->
+        <div class="slide-card">
+            <h2>Contrast & Space</h2>
+            <p><span class="highlight">Contrast:</span> This is a <strong>very dark piece</strong>. I used a lot of black and dark blue to show the severity. Any use of white — eyes, tears, the sails on the ship — really illuminates that darkness.</p>
+            <p><span class="highlight">Space:</span> My interpretation: negative space means something has to be bare. Since I'm a maximalist, I only see <strong>positive space</strong> in this sculpture — every inch is filled with meaning and suffering.</p>
+        </div>
+
+        <!-- SLIDE 7: PROPORTION + HIERARCHY -->
+        <div class="slide-card">
+            <h2>Proportion & Hierarchy</h2>
+            <p><span class="highlight">Proportion:</span> As mentioned, this is an unbalanced piece, so proportion is in play. <strong>Four slaves total</strong>, but one is marginally bigger than the rest — that plays into <strong>hierarchy</strong>. For some reason I forget that the main slave is drowning too.</p>
+            <div class="principle-box">
+                <strong>👁️ Focal Point:</strong> The main figure's eyes draw you in. The tears and the white sails create visual anchors.
+            </div>
+        </div>
+
+        <!-- SLIDE 8: UNITY + VARIETY -->
+        <div class="slide-card">
+            <h2>Unity & Variety</h2>
+            <p><span class="highlight">Unity:</span> All the elements — bust, ship, ocean, mini figures — display a <strong>cohesive artwork</strong>. The dark palette and shared theme hold everything together.</p>
+            <p><span class="highlight">Variety:</span> What adds visual interest or tension? The <strong>contrast and tension between the ship and the main slave</strong> — one above, one below; one wooden and fragile, one organic and drowning.</p>
+        </div>
+
+        <!-- SLIDE 9: INFLUENCE - TOM FEELINGS -->
+        <div class="slide-card">
+            <h2>Influence · Tom Feelings</h2>
+            <p>Tom Feelings was an American artist, cartoonist, children's book illustrator, author, teacher, and activist. Many of his books focus on African-American and African culture, including <em>To Be a Slave</em>, <em>Jambo Means Hello</em>, and <em>The Middle Passage: White Ships/Black Cargo</em>.</p>
+            <div class="image-placeholder">
+                📷 reference — Tom Feelings artwork
+            </div>
+            <p>His graphic novel <em>The Middle Passage</em> inspired my sculpture. I wanted to translate his two-dimensional grief into a three-dimensional, tactile form.</p>
+        </div>
+
+        <!-- SLIDE 10: MAXIMALISM VS MINIMALISM -->
+        <div class="slide-card">
+            <h2>Maximalism vs Minimalism</h2>
+            <p>When it comes to design principles, I think it's interesting: one screams the principles loudly and the other whispers them.</p>
+            <p><span class="highlight">Minimalism screams</span> — clean lines, empty space, every element has to fight for its place.<br>
+            <span class="highlight">Maximalism whispers</span> — abundance, layering, emotion over emptiness. My sculpture is maximalist. It doesn't whisper; it drowns you in detail.</p>
+        </div>
+
+        <!-- SLIDE 11: CONCLUSION -->
+        <div class="slide-card">
+            <h2>Conclusion · What I Learned</h2>
+            <p>This sculpture taught me that <strong>art can hold history without flattening it</strong>. Every rough texture, every dark glaze, every asymmetrical choice — they all serve the story. The Middle Passage cannot be reduced to statistics. My job as an artist is to make people <em>feel</em> what those numbers mean.</p>
+            <p>If I made it today, I would push the contrast even further — more white against the black, more visible tears. But the core remains: <strong>the ship above, the drowning below, and the silence in between.</strong></p>
+        </div>
+
+        <!-- NAVIGATION LINKS -->
+        <div class="link-stack">
+            <a href="index.html">back to home</a>
+            <a href="dof.html">depth of field</a>
+            <a href="field_blur.html">field blur</a>
+            <a href="camera_raw.html">camera raw</a>
+            <a href="photomontage.html">photomontage</a>
+            <a href="homework5.html">homework 5</a>
+            <a href="homework6.html">homework 6</a>
+            <a href="interactive_story.html">interactive story</a>
+        </div>
+    </div>
+</body>
+</html>

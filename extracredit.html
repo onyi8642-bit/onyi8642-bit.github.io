@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyi Ocean · Extra Credit · Nancy Baker Cahill</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://media.giphy.com/media/l0MYEqE5aUt3fpC2I/giphy.gif?cid=790b7611yr9xz5bxs7z5j3z8x2c4a7f6d4g8h2j5k9l0q1w2e&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            line-height: 1.5;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+            color: white;
+            font-size: 3.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.2rem;
+            margin: 0.2em 0 0.5em 0;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Segoe UI', cursive, serif;
+            font-size: 2.2rem;
+            font-weight: normal;
+            color: white;
+            margin: 1.5rem 0 0.5rem 0;
+            border-left: 3px solid white;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffcc88;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .paper-page {
+            background: rgba(0, 0, 0, 0.78);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            border-left: 4px solid white;
+        }
+
+        .paper-page p {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .paper-page ul {
+            margin: 0.8rem 0 0.8rem 2rem;
+        }
+
+        .paper-page li {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        .event-details {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border-left: 2px solid #ffaa66;
+            font-size: 0.95rem;
+        }
+
+        .principle-tag {
+            display: inline-block;
+            background: rgba(255, 170, 102, 0.3);
+            border: 1px solid #ffaa66;
+            border-radius: 20px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+        }
+
+        .link-stack {
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .link-stack a {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            border: 1px solid white;
+            transition: 0.2s ease;
+        }
+
+        .link-stack a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .page-break {
+            text-align: center;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #aaa;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .paper-page {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Extra Credit · Nancy Baker Cahill</h1>
+        <p style="margin-bottom: 1rem; opacity: 0.8;">Artist Talk Reflection · April 29th, The Black Box, HN543</p>
+
+        <!-- PAGE ONE: What I Saw and Heard + Design Principles -->
+        <div class="paper-page">
+            <h2>Page One · The Artist Talk</h2>
+            
+            <div class="event-details">
+                📅 Wednesday, April 29th, 2026 · 3:30-5pm · The Black Box, HN543<br>
+                🎨 Nancy Baker Cahill · Artist Talk + Q&amp;A
+            </div>
+
+            <h3>Who She Is</h3>
+            <p>Nancy Baker Cahill is a <strong>self-taught artist</strong>. She admitted being self-conscious about her work around traditional artists — that vulnerability stood out immediately. She didn't come from a formal art background, yet she now works at the intersection of VR, AR, drawing, and sculpture.</p>
+
+            <h3>Her Creative Journey</h3>
+            <ul>
+                <li>Started with <strong>graphite drawing</strong> — that is where all her work begins, even now.</li>
+                <li>Transitioned into <strong>VR (Virtual Reality)</strong> art, using rendering and 3D tools.</li>
+                <li>Became a <strong>sculptural artist</strong>, but translates her VR work into physical space using <strong>photogrammetry</strong> (capturing real objects into 3D models).</li>
+                <li>Uses <strong>projection mapping</strong> and <strong>inverted AR images</strong> — creating work that exists in two spaces at once: invisible and visible.</li>
+            </ul>
+
+            <h3>Key Concepts & Techniques</h3>
+            <ul>
+                <li><strong>Neuroscience of VR art:</strong> She discussed how creating in VR affects the brain differently than traditional media — the spatial awareness, the full-body engagement.</li>
+                <li><strong>Multi-spatial art:</strong> Her work exists across physical, digital, and augmented realities.</li>
+                <li><strong>AR (Augmented Reality):</strong> She described it as operating in two spaces at once — invisible and visible — drawing a connection to <strong>quantum mechanics</strong>.</li>
+                <li><strong>Auditory + active movement:</strong> Her art feels very spatial and immersive; the viewer moves through it.</li>
+                <li><strong>VFX and distortions:</strong> She manipulates perception intentionally.</li>
+                <li><strong>Anti-gatekeeping:</strong> She created an open-source 4th wall AI platform to democratize access to AR tools.</li>
+            </ul>
+
+            <h3>Ongoing Projects</h3>
+            <ul>
+                <li><strong>Oceans and AI course at Harvard</strong> — an ongoing project exploring ecological awareness through technology.</li>
+                <li><strong>Ecological themes:</strong> LA wildfires, ocean conservation — she has a message she wants to convey, and she conveys it <em>hard</em>.</li>
+                <li><strong>Civic engagement</strong> is central to her practice — art as activism.</li>
+            </ul>
+
+            <h3>Design Principles Observed</h3>
+            <div>
+                <span class="principle-tag">scale (BIG)</span>
+                <span class="principle-tag">distortion</span>
+                <span class="principle-tag">contrast (visible/invisible)</span>
+                <span class="principle-tag">space (multi-spatial)</span>
+                <span class="principle-tag">movement</span>
+                <span class="principle-tag">immersive experience</span>
+            </div>
+            <p><strong>Scale</strong> is a major principle she uses — her work commands physical and digital space. She thinks analytically, calling herself a <strong>trans-disciplinary artist</strong> — no separation between art, science, technology, or activism. She is constantly making work, coming up with new ideas, and <strong>securing funding</strong> to keep pushing boundaries.</p>
+        </div>
+
+        <div class="page-break">✦ ✦ ✦</div>
+
+        <!-- PAGE TWO: What It Means to Me -->
+        <div class="paper-page">
+            <h2>Page Two · Reflection · What It Means to Me</h2>
+            
+            <h3>Connection to Class Material</h3>
+            <p>Nancy Baker Cahill's work connects directly to several topics we covered in MEDPL 150:</p>
+            <ul>
+                <li><strong>New Media Art:</strong> She is a perfect example of an artist using emerging media (VR, AR, projection mapping) as her primary medium.</li>
+                <li><strong>Design Principles in Digital Space:</strong> Scale, contrast, and spatial relationships function differently in VR/AR than in physical sculpture. She manipulates <strong>distortion and perspective</strong> in ways impossible with traditional media.</li>
+                <li><strong>User Experience / Immersion:</strong> Her AR works require the viewer to move through space, engaging with art actively rather than passively. This mirrors our discussions about <strong>interactive design</strong> and how audiences experience digital interfaces.</li>
+                <li><strong>Visual Communication with Purpose:</strong> She uses her platform for <strong>civic engagement and ecological awareness</strong> — art as a tool for change, not just decoration.</li>
+                <li><strong>The Fourth Wall & Access:</strong> Her anti-gatekeeping platform aligns with our class conversations about making digital tools accessible. She gives away the means of production.</li>
+            </ul>
+
+            <h3>My Personal Takeaway</h3>
+            <p><strong>I respect the artist because I went on a similar journey — but I don't resonate with the work.</strong></p>
+            <p>Like Nancy, I started with traditional drawing. Graphite, illustration, hand-drawn animation — that tactile, frame-by-frame process is where my heart lives. I also felt insecure around traditional artists, wondering if my work was "serious enough." Seeing her succeed as a self-taught artist is affirming. It proves that you don't need a pedigree to make meaningful, technically sophisticated art.</p>
+            <p>However, her work itself doesn't land for me emotionally. I understand it intellectually — the quantum mechanics reference, the multi-spatial existence, the ecological messaging — but I don't <em>feel</em> it. Her art is analytical, cerebral, and conceptually dense. That's valid. But I lean toward visceral, narrative, character-driven work. I want to see a face, read an expression, feel a story unfold frame by frame. Her work is about space and perception. Mine is about people and emotion.</p>
+            <p>What I do admire is her <strong>fearlessness</strong>. She doesn't wait for permission. She learns the tools, builds the platforms, and makes the work on her own terms. That is something I want to carry forward — not her aesthetic, but her <strong>approach</strong>.</p>
+
+            <h3>Conclusion</h3>
+            <p>Nancy Baker Cahill is a trans-disciplinary force. She merges art, neuroscience, environmental activism, and emerging technology into immersive experiences. I respect her journey, her analytical rigor, and her commitment to anti-gatekeeping. Her work taught me that <strong>scale and spatial awareness</strong> can be design principles just as powerful as color or composition. Even if I don't connect with her work emotionally, I learned from her process: make the work, keep learning, and don't let tradition dictate what art can be.</p>
+            
+            <div class="event-details" style="margin-top: 1.5rem;">
+                📧 Submitted to Lab Instructor via email · Extra Credit applied to Exam 1
+            </div>
+        </div>
+
+        <!-- NAVIGATION LINKS -->
+        <div class="link-stack">
+            <a href="index.html">back to home</a>
+            <a href="oralpresentation.html">oral presentation</a>
+            <a href="dof.html">depth of field</a>
+            <a href="field_blur.html">field blur</a>
+            <a href="camera_raw.html">camera raw</a>
+            <a href="photomontage.html">photomontage</a>
+            <a href="interactive_story.html">interactive story</a>
+        </div>
+    </div>
+</body>
+</html>
