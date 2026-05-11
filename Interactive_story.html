@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Onyi Ocean · The... </title>
+    <title>Onyi Ocean · The...</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,6 @@
             overflow-x: hidden;
         }
 
-        /* flickering lights — dying bathroom bulb */
         @keyframes flicker {
             0%, 100% { opacity: 1; border-left-color: rgba(255,255,255,0.4); }
             4% { opacity: 0.7; border-left-color: rgba(255,255,255,0.05); }
@@ -43,7 +42,6 @@
             backdrop-filter: blur(2px);
         }
 
-        /* screen shake */
         .shake-effect {
             animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         }
@@ -56,7 +54,6 @@
             60% { transform: translate(2px, 1px) rotate(0.3deg); }
         }
 
-        /* glitch for entity lines */
         .glitch-text {
             animation: glitchy 0.18s ease-in-out 2;
             color: #c44;
@@ -71,7 +68,6 @@
             100% { transform: skew(0deg); opacity: 1;}
         }
 
-        /* floating whispers */
         .creature-whisper {
             font-style: italic;
             color: #ff6a6a;
@@ -88,7 +84,6 @@
             50% { transform: translateY(-9px) translateX(4px);}
         }
 
-        /* sticky whisper that follows scroll (haunts the UI) */
         .sticky-whisper {
             position: sticky;
             top: 12px;
@@ -106,7 +101,6 @@
             width: fit-content;
         }
 
-        /* fade transitions */
         .fade-transition {
             transition: opacity 0.5s ease-in-out;
             opacity: 0;
@@ -115,7 +109,6 @@
             opacity: 1;
         }
 
-        /* shatter glass ending */
         .shatter-animation {
             animation: glassBreak 0.45s forwards;
         }
@@ -222,7 +215,6 @@
             cursor: pointer;
         }
 
-        /* clickable hotspot for "Look around" */
         .hotspot-area {
             background: rgba(255,255,200,0.1);
             border-radius: 100px;
@@ -248,78 +240,73 @@
 <body>
 
 <div id="gifOverlay" class="gif-overlay hidden">
-    <button class="next-btn" id="nextButton">⟡ next ⟡</button>
+    <button class="next-btn" id="nextButton">next</button>
 </div>
 
 <div class="container" id="mainContainer">
-    <h1> THE... </h1>
+    <h1>The...</h1>
     <div id="scene-start">
         <div class="story-card">
-            <img class="scene-image" src="Start.PNG" alt="bathroom entrance">
-            <div class="story-text">The door clicks shut. Fluorescent buzz. Your reflection waits.</div>
-            <!-- interactive search (look around) -->
-            <div class="hotspot-area" id="lookAroundBtn"> Look around the room</div>
+            <img class="scene-image" src="Enter.GIF" alt="entrance">
+            <div class="story-text">The door clicks shut. Fluorescent buzz. Something feels wrong.</div>
+            <div class="hotspot-area" id="lookAroundBtn">look around the room</div>
             <div id="roomClues" style="font-size:0.9rem; margin-top: 6px; font-style:italic;"></div>
             <div class="choices">
-                <button onclick="triggerChoiceWithGif('stare', 'Stare.GIF')" class="choice-btn"> stare intensely</button>
-                <button onclick="triggerChoiceWithGif('wash', 'Wash.GIF')" class="choice-btn"> Wash your face</button>
-                <button onclick="triggerSensoryChoice()" class="choice-btn"> Touch the glass</button>
+                <button class="choice-btn" data-choice="stare" data-gif="Stare.GIF">stare intensely</button>
+                <button class="choice-btn" data-choice="wash" data-gif="Wash.GIF">wash your face</button>
+                <button id="touchGlassBtn" class="choice-btn">touch the glass</button>
             </div>
-            <div id="homeLinkDiv"><a href="index.html" class="back-link" id="mainHomeLink">← back to home</a></div>
+            <div id="homeLinkDiv"><a href="index.html" class="back-link" id="mainHomeLink">back to home</a></div>
         </div>
     </div>
     <div id="dynamic-scene" style="display: none;"></div>
 </div>
 
 <script>
-    let pendingSceneId = null;
-    let pendingGif = null;
+    let currentSceneElement = null;
     let creatureMet = false;
     let dimLevel = 0;
 
-    // ----- subliminal flash (uses Shatter.GIF for 90ms)
-    async function subliminalFlash() {
-        const overlay = document.getElementById('gifOverlay');
-        const originalBg = overlay.style.backgroundImage;
-        overlay.style.backgroundImage = "url('Shatter.GIF')";
-        overlay.style.backgroundSize = 'cover';
-        overlay.classList.remove('hidden');
-        await new Promise(r => setTimeout(r, 95));
-        overlay.classList.add('hidden');
-        overlay.style.backgroundImage = originalBg;
-    }
-
-    function triggerChoiceWithGif(sceneId, gifUrl) {
-        pendingSceneId = sceneId;
-        pendingGif = gifUrl;
+    function triggerChoice(choiceId, gifUrl) {
         const overlay = document.getElementById('gifOverlay');
         overlay.style.backgroundImage = `url('${gifUrl}')`;
         overlay.style.backgroundSize = 'cover';
         overlay.classList.remove('hidden');
-        // subliminal flash on choice click (psychological effect)
-        if (creatureMet) subliminalFlash();
+        
+        window.nextAction = function() {
+            overlay.classList.add('hidden');
+            if (choiceId === 'talk_to_it_animated') {
+                showTalkToItScene();
+            } else {
+                showScene(choiceId);
+            }
+            window.nextAction = null;
+        };
+    }
+
+    function triggerChoiceWithGif(sceneId, gifUrl) {
+        const overlay = document.getElementById('gifOverlay');
+        overlay.style.backgroundImage = `url('${gifUrl}')`;
+        overlay.style.backgroundSize = 'cover';
+        overlay.classList.remove('hidden');
+        
+        window.nextAction = function() {
+            overlay.classList.add('hidden');
+            if (sceneId === 'talk_to_it_animated') {
+                showTalkToItScene();
+            } else {
+                showScene(sceneId);
+            }
+            window.nextAction = null;
+        };
     }
 
     function triggerSensoryChoice() {
         const cluesDiv = document.getElementById('roomClues');
-        cluesDiv.innerHTML = '<span class="creature-whisper" style="animation:none;"> The glass is warmer than your skin. Your fingertip meets itself — but the timing feels a fraction of a second off. Something is mimicking you.</span>';
+        cluesDiv.innerHTML = '<span class="creature-whisper" style="animation:none;">the glass is warmer than your skin. your fingertip meets itself but the timing feels a fraction of a second off. something is mimicking you.</span>';
         setTimeout(() => {
-            cluesDiv.innerHTML += '<div style="margin-top:6px;">— the barrier is thinning —</div>';
+            cluesDiv.innerHTML += '<div style="margin-top:6px;">the barrier is thinning</div>';
         }, 800);
-    }
-
-    async function showPendingScene() {
-        if (pendingSceneId) {
-            if (pendingSceneId === 'talk_to_it_animated') {
-                showTalkToItScene();
-            } else {
-                await subliminalFlash(); // extra glitch before transition
-                showScene(pendingSceneId);
-            }
-            pendingSceneId = null;
-            pendingGif = null;
-        }
-        document.getElementById('gifOverlay').classList.add('hidden');
     }
 
     async function fadeTransition(callback) {
@@ -337,7 +324,7 @@
         if (!creatureMet) return;
         const homeLink = document.getElementById('dynamic-scene')?.querySelector('.back-link') || document.getElementById('mainHomeLink');
         if (homeLink && !homeLink.classList.contains('haunted-link')) {
-            homeLink.innerText = " you can't go back ";
+            homeLink.innerText = "you can't go back";
             homeLink.classList.add('haunted-link');
         }
     }
@@ -348,14 +335,13 @@
         if (card) card.style.backgroundColor = `rgba(0, 0, 0, ${Math.min(0.88 + dimLevel * 0.5, 0.98)})`;
         document.body.style.backgroundColor = `rgba(0, 0, 0, ${Math.min(0.3 + dimLevel * 0.4, 0.95)})`;
     }
+    
     function resetDimming() { dimLevel = 0; document.body.style.backgroundColor = 'black'; }
-
     function addShakeToImage() {
         const img = document.querySelector('#dynamic-scene .scene-image, #scene-start .scene-image');
         if (img) { img.classList.add('shake-effect'); setTimeout(() => img.classList.remove('shake-effect'), 450); }
     }
 
-    // expanded "ignore" path with sticky whisper
     function showScene(sceneId) {
         fadeTransition(() => {
             const dynamicDiv = document.getElementById('dynamic-scene');
@@ -366,43 +352,57 @@
 
             let html = '';
             if (sceneId === 'stare') {
-                html = `<div class="story-card"><img class="scene-image" src="Stare.GIF"><div class="story-text">You lock eyes. The reflection doesn't blink first.</div><div class="story-text"><span class="creature-whisper">"I'm watching you"</span></div><div class="choices"><button onclick="triggerChoiceWithGif('look_for_it', '9.gif')" class="choice-btn">🔍 look for it</button><button onclick="triggerChoiceWithGif('talk_to_it_animated', null)" class="choice-btn"> talk to it</button></div><button onclick="resetToStart()" class="back-link">↺ start over</button></div>`;
-                setTimeout(() => addShakeToImage(), 80);
+                html = `<div class="story-card"><img class="scene-image" src="Stare.GIF"><div class="story-text">You lock eyes. The figure in the glass doesn't blink first.</div><div class="story-text"><span class="creature-whisper">"I'm watching you"</span></div><div class="choices"><button class="choice-btn" data-choice="look_for_it" data-gif="9.gif">look for it</button><button class="choice-btn" data-choice="talk_to_it_animated" data-gif="">talk to it</button></div><button class="back-link reset-btn">start over</button></div>`;
                 creatureMet = true;
             } 
             else if (sceneId === 'wash') {
-                html = `<div class="story-card"><img class="scene-image" src="Wash.GIF"><div class="story-text">Water runs. When you look up, the mirror image wipes its face a second later.</div><div class="story-text"><span class="creature-whisper">"I'm following you"</span></div><div class="choices"><button onclick="triggerChoiceWithGif('look_for_it', '9.gif')" class="choice-btn"> look for it</button><button onclick="triggerChoiceWithGif('talk_to_it_animated', null)" class="choice-btn"> talk to it</button></div><button onclick="resetToStart()" class="back-link">↺ start over</button></div>`;
+                html = `<div class="story-card"><img class="scene-image" src="Wash.GIF"><div class="story-text">Water runs. When you look up, the figure in the glass wipes its face a second after you do.</div><div class="story-text"><span class="creature-whisper">"I'm following you"</span></div><div class="choices"><button class="choice-btn" data-choice="look_for_it" data-gif="9.gif">look for it</button><button class="choice-btn" data-choice="talk_to_it_animated" data-gif="">talk to it</button></div><button class="back-link reset-btn">start over</button></div>`;
                 creatureMet = true;
             }
             else if (sceneId === 'look_for_it') {
-                html = `<div class="story-card"><img class="scene-image" src="9.gif"><div class="story-text">You search corners, shadows. But the voice curls behind your ear.</div><div class="story-text"><span class="creature-whisper">"no... it's not going to be that easy to find me"</span></div><div class="choices"><button onclick="triggerChoiceWithGif('talk_to_it_animated', null)" class="choice-btn"> talk to it</button><button onclick="triggerChoiceWithGif('ignore_after_look', 'Ignore.GIF')" class="choice-btn"> Ignore it</button></div><button onclick="resetToStart()" class="back-link">↺ start over</button></div>`;
+                html = `<div class="story-card"><img class="scene-image" src="9.gif"><div class="story-text">You search corners, shadows. But the voice curls behind your ear.</div><div class="story-text"><span class="creature-whisper">"no... it's not going to be that easy to find me"</span></div><div class="choices"><button class="choice-btn" data-choice="talk_to_it_animated" data-gif="">talk to it</button><button class="choice-btn" data-choice="ignore_after_look" data-gif="Ignore.GIF">ignore it</button></div><button class="back-link reset-btn">start over</button></div>`;
             }
             else if (sceneId === 'ignore_after_look' || sceneId === 'ignore_after_talk') {
                 html = `<div class="story-card"><img class="scene-image" src="TVEatSleep.PNG"><div class="story-text">You try to live normally. But it never leaves.</div>
-                <div class="sticky-whisper"> "I'm still here, watching the same screen..."</div>
-                <div class="story-text"> watching TV → <span class="creature-whisper">"I love this show"</span></div>
-                <div class="story-text"> eating broccoli → <span class="creature-whisper">"I hate broccoli"</span></div>
-                <div class="story-text"> falling asleep → <span class="creature-whisper">"don't worry I'll watch over you"</span></div>
-                <div class="choices"><button onclick="triggerChoiceWithGif('accept_reality', 'StareFinale.GIF')" class="choice-btn">✅ except this reality</button><button onclick="triggerChoiceWithGif('panic_end', 'Shatter.GIF')" class="choice-btn"> Panic</button></div><button onclick="resetToStart()" class="back-link">↺ start over</button></div>`;
+                <div class="sticky-whisper">"I'm still here, watching the same screen..."</div>
+                <div class="story-text">watching tv → <span class="creature-whisper">"I love this show"</span></div>
+                <div class="story-text">eating broccoli → <span class="creature-whisper">"I hate broccoli"</span></div>
+                <div class="story-text">falling asleep → <span class="creature-whisper">"don't worry I'll watch over you"</span></div>
+                <div class="choices"><button class="choice-btn" data-choice="accept_reality" data-gif="StareFinale.GIF">accept this reality</button><button class="choice-btn" data-choice="panic_end" data-gif="Shatter.GIF">panic</button></div><button class="back-link reset-btn">start over</button></div>`;
             }
             else if (sceneId === 'accept_reality') {
-                html = `<div class="story-card"><img class="scene-image" src="BangHead.PNG"><div class="story-text">You accept. The voice follows forever. One morning you bang your head against the mirror until it cracks.</div><div class="story-text" style="color:#b77;">✦ THE END — THE MIRROR KEEPS YOUR SHADOW ✦</div><button onclick="resetToStart()" class="choice-btn">↺ play again</button><div style="margin-top:1rem;"><a href="index.html" class="back-link"> home</a></div></div>`;
-                setInterval(() => { const img = document.querySelector('#dynamic-scene .scene-image'); if (img) img.classList.add('shake-effect'); setTimeout(() => img?.classList.remove('shake-effect'), 300); }, 2100);
+                html = `<div class="story-card"><img class="scene-image" src="BangHead.PNG"><div class="story-text">You accept. The voice follows forever. One morning you bang your head against the mirror until it cracks.</div><div class="story-text" style="color:#b77;">the end — the mirror keeps your shadow</div><button class="choice-btn reset-btn">play again</button><div style="margin-top:1rem;"><a href="index.html" class="back-link">home</a></div></div>`;
             }
             else if (sceneId === 'panic_end') {
-                html = `<div class="story-card" id="shatterCard"><img class="scene-image" src="Shatter.PNG"><div class="story-text">You scream. The reflection snarls and shatters the glass — pulling you through.</div><div class="story-text" style="color:red;">✦ THE END — YOU ARE NOW THE REFLECTION ✦</div><button onclick="resetToStart()" class="choice-btn">↺ restart</button><div><a href="index.html" class="back-link"> home</a></div></div>`;
+                html = `<div class="story-card" id="shatterCard"><img class="scene-image" src="Shatter.PNG"><div class="story-text">You scream. The reflection snarls and shatters the glass — pulling you through.</div><div class="story-text" style="color:red;">the end — you are now the reflection</div><button class="choice-btn reset-btn">restart</button><div><a href="index.html" class="back-link">home</a></div></div>`;
                 setTimeout(() => { const img = document.querySelector('#dynamic-scene .scene-image'); if (img) img.classList.add('shatter-animation'); }, 100);
             }
             else if (sceneId === 'stare_at_yourself') {
-                html = `<div class="story-card"><img class="scene-image" src="StareEnd.PNG"><div class="story-text">You stare at your own hollow eyes. then bang your head on the mirror. "be quiet."</div><div class="story-text" style="color:#a55;">✦ THE END — SILENCE AT LAST ✦</div><button onclick="resetToStart()" class="choice-btn">↺ play again</button><div><a href="index.html" class="back-link"> home</a></div></div>`;
+                html = `<div class="story-card"><img class="scene-image" src="StareEnd.PNG"><div class="story-text">You stare at your own hollow eyes. Then bang your head on the mirror. "be quiet."</div><div class="story-text" style="color:#a55;">the end — silence at last</div><button class="choice-btn reset-btn">play again</button><div><a href="index.html" class="back-link">home</a></div></div>`;
             }
+            
             dynamicDiv.innerHTML = html;
             if (creatureMet) applyHauntUI();
+            
+            // attach event listeners to new buttons
+            dynamicDiv.querySelectorAll('.choice-btn').forEach(btn => {
+                const choiceId = btn.getAttribute('data-choice');
+                const gifUrl = btn.getAttribute('data-gif');
+                if (choiceId && gifUrl !== null) {
+                    btn.addEventListener('click', () => triggerChoiceWithGif(choiceId, gifUrl));
+                } else if (choiceId && gifUrl === '') {
+                    btn.addEventListener('click', () => triggerChoiceWithGif(choiceId, null));
+                } else if (btn.classList.contains('reset-btn')) {
+                    btn.addEventListener('click', resetToStart);
+                }
+            });
+            dynamicDiv.querySelectorAll('.reset-btn:not(.choice-btn)').forEach(btn => {
+                btn.addEventListener('click', resetToStart);
+            });
             window.scrollTo({ top: 0 });
         });
     }
 
-    // expanded talk to it dialogue (psychological depth + shared space)
     function showTalkToItScene() {
         fadeTransition(() => {
             const dynamicDiv = document.getElementById('dynamic-scene');
@@ -410,30 +410,32 @@
             if (startDiv) startDiv.style.display = 'none';
             dynamicDiv.style.display = 'block';
             resetDimming();
+            
             const dialogue = [
                 { speaker: "You", text: "why, what did I ever do to you", style: "" },
                 { speaker: "It", text: "nothing, you want me to follow you", style: "creepy" },
                 { speaker: "You", text: "Who are you?", style: "" },
-                { speaker: "It", text: "The one who stayed when you looked away.", style: "glitch" },
+                { speaker: "It", text: "the one who stayed when you looked away.", style: "glitch" },
                 { speaker: "You", text: "I'm alone in here.", style: "" },
-                { speaker: "It", text: "Are you? Then why are you still acting for me?", style: "creepy" },
-                { speaker: "You", text: "No I don't. please stop", style: "" },
-                { speaker: "It", text: "I can't… You want — need me to follow you", style: "glitch" },
+                { speaker: "It", text: "are you? then why are you still acting for me?", style: "creepy" },
+                { speaker: "You", text: "no I don't. please stop", style: "" },
+                { speaker: "It", text: "I can't… you want — need me to follow you", style: "glitch" },
                 { speaker: "You", text: "…", style: "silence" }
             ];
-            const containerHtml = `<div class="story-card" id="talkSceneCard"><div class="story-text"> The air freezes. You speak to the mirror.</div><div id="typewriterContainer" style="min-height:320px;"></div><div id="postChoices" style="display: none;"><div class="choices"><button onclick="triggerChoiceWithGif('ignore_after_talk', 'Ignore.GIF')" class="choice-btn">🙉 ignore it</button><button onclick="triggerChoiceWithGif('stare_at_yourself', 'StareFinale.GIF')" class="choice-btn">🪞 Stare at yourself</button></div></div><button onclick="resetToStart()" class="back-link">↺ start over</button></div>`;
+            
+            const containerHtml = `<div class="story-card" id="talkSceneCard"><div class="story-text">the air freezes. you speak into the room.</div><div id="typewriterContainer" style="min-height:320px;"></div><div id="postChoices" style="display: none;"><div class="choices"><button class="choice-btn" data-choice="ignore_after_talk" data-gif="Ignore.GIF">ignore it</button><button class="choice-btn" data-choice="stare_at_yourself" data-gif="StareFinale.GIF">stare at yourself</button></div></div><button class="back-link reset-btn">start over</button></div>`;
             dynamicDiv.innerHTML = containerHtml;
             creatureMet = true;
             applyHauntUI();
+            
             let idx = 0;
             const container = document.getElementById('typewriterContainer');
             const choicesDiv = document.getElementById('postChoices');
 
             function typeLine(lineObj) {
                 const p = document.createElement('p');
-                p.classList.add('typewriter-line');
                 p.style.margin = '0.7rem 0';
-                p.innerHTML = `<strong style="color:${lineObj.speaker === 'It' ? '#c66' : '#eee'}">${lineObj.speaker}:</strong> “${lineObj.text}”`;
+                p.innerHTML = `<strong style="color:${lineObj.speaker === 'It' ? '#c66' : '#eee'}">${lineObj.speaker}:</strong> "${lineObj.text}"`;
                 if (lineObj.speaker === "It") p.style.fontFamily = "monospace";
                 if (lineObj.style === "glitch") p.classList.add('glitch-text');
                 container.appendChild(p);
@@ -445,6 +447,15 @@
                 else choicesDiv.style.display = 'block';
             }
             setTimeout(() => typeLine(dialogue[0]), 200);
+            
+            dynamicDiv.querySelectorAll('.choice-btn').forEach(btn => {
+                const choiceId = btn.getAttribute('data-choice');
+                const gifUrl = btn.getAttribute('data-gif');
+                btn.addEventListener('click', () => triggerChoiceWithGif(choiceId, gifUrl));
+            });
+            dynamicDiv.querySelectorAll('.reset-btn').forEach(btn => {
+                btn.addEventListener('click', resetToStart);
+            });
             window.scrollTo({ top: 0 });
         });
     }
@@ -459,32 +470,45 @@
             creatureMet = false;
             resetDimming();
             const homeLink = document.getElementById('mainHomeLink');
-            if (homeLink) { homeLink.innerText = "← back to home"; homeLink.classList.remove('haunted-link'); }
+            if (homeLink) { homeLink.innerText = "back to home"; homeLink.classList.remove('haunted-link'); }
             const clues = document.getElementById('roomClues');
             if (clues) clues.innerHTML = '';
             window.scrollTo({ top: 0 });
         });
     }
 
-    document.getElementById('nextButton').addEventListener('click', showPendingScene);
-    setInterval(() => { if (creatureMet) { applyHauntUI(); } }, 2800);
-
-    // Look around mechanic: interactive search
+    // initialize event listeners
+    document.getElementById('nextButton').addEventListener('click', () => {
+        if (window.nextAction) window.nextAction();
+    });
+    
+    document.querySelectorAll('#scene-start .choice-btn[data-choice]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const choiceId = btn.getAttribute('data-choice');
+            const gifUrl = btn.getAttribute('data-gif');
+            triggerChoiceWithGif(choiceId, gifUrl);
+        });
+    });
+    
+    document.getElementById('touchGlassBtn')?.addEventListener('click', triggerSensoryChoice);
+    
     document.getElementById('lookAroundBtn')?.addEventListener('click', () => {
         const cluesDiv = document.getElementById('roomClues');
         if (!cluesDiv) return;
         const cluesList = [
-            " The toothbrush is dry. No one has used it in days.",
-            " The mirror has a faint smudge... from the inside.",
-            " Water stains form letters you can't quite read.",
-            " Time feels wrong — the second hand on the clock jumps backward."
+            "the toothbrush is dry. no one has used it in days.",
+            "the glass has a faint smudge... from the inside.",
+            "water stains form letters you can't quite read.",
+            "time feels wrong — the second hand on the clock jumps backward."
         ];
         const randomClue = cluesList[Math.floor(Math.random() * cluesList.length)];
-        cluesDiv.innerHTML = `<span class="creature-whisper" style="background:black;"> ${randomClue}</span>`;
+        cluesDiv.innerHTML = `<span class="creature-whisper" style="background:black;">${randomClue}</span>`;
         if (!creatureMet && (randomClue.includes("inside") || randomClue.includes("wrong"))) {
-            cluesDiv.innerHTML += `<div style="margin-top:5px;">— something is off —</div>`;
+            cluesDiv.innerHTML += `<div style="margin-top:5px;">something is off</div>`;
         }
     });
+    
+    setInterval(() => { if (creatureMet) applyHauntUI(); }, 2800);
 </script>
 </body>
 </html>
